@@ -7,10 +7,13 @@
     <string name="wrongWord">С вашим словом что-то не так, попробуйте еще раз</string>
     <string name="won">Поздравляю! Вы угадали с </string>
     <string name="attempts"> попыток!</string>
+    <string name="attempt"> попытки!</string>
     <string name="sameLetters">Совпадающих букв: </string>
     <string name="Rules">Правила</string>
     <string name="TheRules">Правила игры таковы: телефон загадал слово из 5 неповторяющихся букв, и ваша задача его
         угадать. Вы пишете в поле свой вариант, телефон отвечает - сколько букв совпадает в вашем и загаданном слове.
         Главные правила - букв ровно пять, они не повторяются. Удачной игры!
     </string>
+    <string name="wrongLength">Неверная длина слова</string>
+    <string name="wrongLetters">Ошибка - совпадающие буквы внутри слова</string>
 </resources>

@@ -21,6 +21,9 @@ public class MyActivity extends Activity implements View.OnClickListener {
         play = (Button)findViewById(R.id.buttonStartPlaying);
         rules = (Button)findViewById(R.id.startRules);
 
+        play.setOnClickListener(this);
+        rules.setOnClickListener(this);
+
 
     }
 
@@ -36,7 +39,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
             }
             case R.id.startRules:
             {
-                intent = new Intent(MyActivity.this,Game.class);
+                intent = new Intent(MyActivity.this,Rules.class);
                 break;
             }
         }

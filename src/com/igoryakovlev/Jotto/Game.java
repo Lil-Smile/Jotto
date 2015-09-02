@@ -2,6 +2,7 @@ package com.igoryakovlev.Jotto;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,15 +16,14 @@ import java.util.Random;
  */
 public class Game extends Activity implements View.OnClickListener{
 
-    private static ArrayList<String> data;
-    static {
-        data.add("Кровь");
-        data.add("Песок");
-    }
+    private static ArrayList<String> data = new ArrayList<String>();
+
+
+
 
     private int randomNumber=0;
     private String wordToGuess;
-    private int count;
+    private int count=0;
 
     Button buttonGetIt;
     Button buttonPlay;
@@ -34,6 +34,9 @@ public class Game extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
 
+        //init data
+        data = fillTheData();
+
         buttonGetIt = (Button)findViewById(R.id.buttonGetIt);
         buttonPlay = (Button)findViewById(R.id.buttonPlay);
         etWord = (EditText)findViewById(R.id.etWord);
@@ -41,10 +44,11 @@ public class Game extends Activity implements View.OnClickListener{
         buttonPlay.setOnClickListener(this);
         buttonGetIt.setOnClickListener(this);
 
-        count = 0;
+
         Random random = new Random(data.size());
-        randomNumber = random.nextInt();
+        randomNumber = random.nextInt(data.size()+1);
         wordToGuess = data.get(randomNumber);
+        Log.d("word",wordToGuess);
     }
 
     @Override
@@ -53,22 +57,31 @@ public class Game extends Activity implements View.OnClickListener{
         {
             case R.id.buttonGetIt:
             {
+                this.count++;
                 String word = etWord.getText().toString();
+                word = word.toLowerCase();
                 if (word.length()!=5)
                 {
-                    Toast.makeText(getApplicationContext(),getString(R.string.wrongWord),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),getString(R.string.wrongLength),Toast.LENGTH_LONG).show();
                 } else if (word == wordToGuess)
                 {
-                    Toast.makeText(getApplicationContext(), getString(R.string.won)+count+R.string.attempts,Toast.LENGTH_LONG).show();
+                    if (count==1)
+                    {
+                        Toast.makeText(getApplicationContext(), getString(R.string.won)+" " + this.count+" "+ getString(R.string.attempt),Toast.LENGTH_LONG).show();
+
+                    } else
+                    {
+                        Toast.makeText(getApplicationContext(), getString(R.string.won)+" " +this.count+" " +getString(R.string.attempts),Toast.LENGTH_LONG).show();
+                    }
                     buttonPlay.setVisibility(View.VISIBLE);
                     buttonGetIt.setVisibility(View.INVISIBLE);
-                } else if (checkingWord(word))
+                } else if (!checkingWord(word))
                 {
-                    Toast.makeText(getApplicationContext(),getString(R.string.wrongWord),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),getString(R.string.wrongLetters),Toast.LENGTH_LONG).show();
                 } else
                 {
                     int tmpCount=0;
-                    count++;
+
                     for (int i = 0; i<word.length(); i++)
                     {
                         char c = word.charAt(i);
@@ -81,12 +94,29 @@ public class Game extends Activity implements View.OnClickListener{
                             }
                         }
                     }
-                    Toast.makeText(getApplicationContext(),getString(R.string.sameLetters)+tmpCount,Toast.LENGTH_LONG).show();
+                    if (tmpCount<5)
+                    {
+                        Toast.makeText(getApplicationContext(),getString(R.string.sameLetters)+tmpCount,Toast.LENGTH_LONG).show();
+                    } else
+                    {
+                        if (count==1)
+                        {
+                            Toast.makeText(getApplicationContext(), getString(R.string.won)+" " +this.count+" " +getString(R.string.attempt),Toast.LENGTH_LONG).show();
+
+                        } else
+                        {
+                            Toast.makeText(getApplicationContext(), getString(R.string.won)+" " +this.count+" " +getString(R.string.attempts),Toast.LENGTH_LONG).show();
+                        }
+                        buttonPlay.setVisibility(View.VISIBLE);
+                        buttonGetIt.setVisibility(View.INVISIBLE);
+                    }
                 }
+                etWord.setText("");
                 break;
             }
             case R.id.buttonPlay:
             {
+                this.count=0;
                 buttonGetIt.setVisibility(View.VISIBLE);
                 buttonPlay.setVisibility(View.INVISIBLE);
                 Toast.makeText(getApplicationContext(),getString(R.string.gameStart),Toast.LENGTH_LONG).show();
@@ -110,6 +140,16 @@ public class Game extends Activity implements View.OnClickListener{
         }
         return true;
     }
+
+    private ArrayList<String> fillTheData()
+    {
+        ArrayList<String> data = new ArrayList<String>();
+        data.add("кровь");
+        data.add("песок");
+        return data;
+
+    }
+
 
 
 
