@@ -3,4 +3,14 @@
     <string name="app_name">Jotto</string>
     <string name="Play">Играть</string>
     <string name="getIt">Принято</string>
+    <string name="gameStart">Игра началась! Вводите свое слово в поле выше и нажмите "Принято"</string>
+    <string name="wrongWord">С вашим словом что-то не так, попробуйте еще раз</string>
+    <string name="won">Поздравляю! Вы угадали с </string>
+    <string name="attempts"> попыток!</string>
+    <string name="sameLetters">Совпадающих букв: </string>
+    <string name="Rules">Правила</string>
+    <string name="TheRules">Правила игры таковы: телефон загадал слово из 5 неповторяющихся букв, и ваша задача его
+        угадать. Вы пишете в поле свой вариант, телефон отвечает - сколько букв совпадает в вашем и загаданном слове.
+        Главные правила - букв ровно пять, они не повторяются. Удачной игры!
+    </string>
 </resources>
