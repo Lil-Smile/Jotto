@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jotto</string>
+    <string name="Play">Играть</string>
+    <string name="getIt">Принято</string>
+</resources>
