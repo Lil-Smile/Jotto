@@ -3,19 +3,21 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-        >
+                android:background="@color/backColor">
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Play"
             android:id="@+id/buttonStartPlaying" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-            android:layout_marginTop="156dp"/>
+            android:layout_marginTop="156dp" android:background="@drawable/button"
+            android:textColor="@color/textColor"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Rules"
             android:id="@+id/startRules" android:layout_below="@+id/buttonStartPlaying" android:layout_centerHorizontal="true"
-            android:layout_marginTop="122dp"/>
+            android:layout_marginTop="122dp" android:background="@drawable/button"
+            android:textColor="@color/textColor"/>
 </RelativeLayout>
 

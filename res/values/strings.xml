@@ -16,4 +16,6 @@
     </string>
     <string name="wrongLength">Неверная длина слова</string>
     <string name="wrongLetters">Ошибка - совпадающие буквы внутри слова</string>
+    <string name="startAgain">Начать сначала</string>
+    <string name="guessedWordWas">Загаданное слово было: </string>
 </resources>
